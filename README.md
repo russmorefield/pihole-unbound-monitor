@@ -1,7 +1,7 @@
 # Pi-hole + Unbound Monitor Script
 
 <p align="center">
-  <img src="assets/logo.png" alt="Pi-hole Unbound Monitor Logo" width="400"/>
+  <img src="assets/alt-logo.png" alt="Pi-hole Unbound Monitor Logo" width="500"/>
 </p>
 
 This script automates the process of:
