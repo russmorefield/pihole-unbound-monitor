@@ -16,10 +16,15 @@ This script automates the process of:
 - ✅ Silent operation for up-to-date systems
 - ⚠️ Notifies via Gotify on:
     - Pi-hole update success
-  - Unbound service errors or status down
+    - Unbound service errors or status down
 - 📝 Logs all activity to `/var/log/pihole-unbound-monitor.log`
 
 ## 🔧 Setup Instructions
+
+## 📜 Script Source
+
+<!-- START:monitor-script -->
+<!-- END:monitor-script -->
 
 1. **Edit the Script**  
      Replace the following variables in `pihole-unbound-monitor.sh`:
@@ -41,7 +46,7 @@ This script automates the process of:
 
      ```bash
      sudo ./pihole-unbound-monitor.sh
-    ```
+     ```
 
     **Cron (e.g., run every 6 hours):**  
          Add to your crontab:

@@ -1,0 +1,29 @@
+name: Auto-Update Script in README
+
+on:
+  push:
+    paths:
+      - 'pihole-unbound-monitor.sh'
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Inject latest script into README
+        run: |
+          chmod +x inject-script-into-readme.sh
+          ./inject-script-into-readme.sh
+
+      - name: Commit updated README
+        run: |
+          git add README.md
+          git commit -m "📄 Auto-update README with latest script" || echo "No changes to commit"
+          git push
