@@ -1,30 +1,65 @@
-name: Create Release
+name: Release Please
 
 on:
   push:
-    tags:
-      - 'v*'  # triggers only when pushing tags like v1.0.0
+    branches:
+      - main
+    paths:
+      - 'version.txt'
+      - '.github/workflows/release.yml'
+      - 'pihole-unbound-monitor.sh'
+      - 'README.md'
 
 jobs:
-  release:
-    name: Release on Tag
+  update-readme-and-commit:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.extract.outputs.VERSION }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract version from version.txt
+        id: extract
+        run: |
+          VERSION=$(cat version.txt)
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Update README.md version badge
+        run: |
+          VERSION=${{ steps.extract.outputs.VERSION }}
+          sed -i -E 's/(version-\().*?(\)-brightgreen)/\1'"$VERSION"'\2/' README.md
+
+      - name: Commit updated README
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: update README with version ${{ steps.extract.outputs.VERSION }}"
+          commit_user_name: github-actions[bot]
+          commit_user_email: github-actions[bot]@users.noreply.github.com
+
+  create-release:
+    needs: update-readme-and-commit
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up release assets
-        run: |
-          mkdir release-assets
-          cp pihole-unbound-monitor.sh release-assets/
-          cp README.md release-assets/
+      - name: Get version from output
+        run: echo "VERSION=${{ needs.update-readme-and-commit.outputs.version }}"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          name: Release ${{ github.ref_name }}
-          tag_name: ${{ github.ref_name }}
-          files: release-assets/*
+          tag_name: v${{ needs.update-readme-and-commit.outputs.version }}
+          name: Pi-hole Monitor v${{ needs.update-readme-and-commit.outputs.version }}
+          body: |
+            🆕 **Pi-hole/Unbound Monitor v${{ needs.update-readme-and-commit.outputs.version }}**
+
+            See changelog or recent commits for details.
+
+          files: |
+            pihole-unbound-monitor.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
