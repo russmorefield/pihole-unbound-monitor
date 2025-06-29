@@ -1,0 +1,38 @@
+# Ignore shell history and temporary files
+*.swp
+*.swo
+*~
+.*.sw?
+
+# Log files
+*.log
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.tmp
+*.old
+
+# Systemd auto-generated files (if you test locally)
+*.service
+*.timer
+
+# Environment/configs
+.env
+.env.*
+
+# Python virtualenvs (if used)
+venv/
+.env/
+__pycache__/
+
+# VSCode/JetBrains IDE settings
+.vscode/
+.idea/
+
+# Misc
+*.tar.gz
+*.zip
