@@ -1,0 +1,35 @@
+name: Shell Script CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    name: Lint Shell Script
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install shellcheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+
+      - name: Run shellcheck on script
+        run: shellcheck pihole-unbound-monitor.sh
+
+  validate-readme:
+    name: Check README exists and has title
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate README format
+        run: |
+          grep -q "^# Pi-hole/Unbound Monitor" README.md || (echo "Missing title in README.md" && exit 1)
+          
