@@ -71,3 +71,4 @@ check_pihole_update
 check_unbound_status
 log_msg "Monitor script completed."
 # === END OF SCRIPT ===
+# Ensure the script is executable
