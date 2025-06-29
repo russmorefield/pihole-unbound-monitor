@@ -24,3 +24,4 @@ BEGIN { in_block=0 }
 ' "$README" > "$README.tmp" && mv "$README.tmp" "$README"
 
 echo "✅ Injected '$SCRIPT' into '$README'."
+# Check if the script was successfully injected
