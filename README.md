@@ -1,5 +1,5 @@
 # Pi-hole + Unbound Monitor Script
-
+![Version](https://img.shields.io/badge/version-{{VERSION}}-purple?style=for-the-badge)
 <p align="center">
   <img src="assets/alt-logo.png" alt="Pi-hole Unbound Monitor Logo" width="800"/>
 </p>
