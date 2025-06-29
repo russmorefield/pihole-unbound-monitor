@@ -1,5 +1,7 @@
 # Pi-hole + Unbound Monitor Script
 
+![Project Logo](assets/logo.png)
+
 This script automates the process of:
 
 - Checking if Pi-hole needs updating and updating it if required
