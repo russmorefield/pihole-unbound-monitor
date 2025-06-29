@@ -25,3 +25,10 @@ BEGIN { in_block=0 }
 
 echo "✅ Injected '$SCRIPT' into '$README'."
 # Check if the script was successfully injected
+if grep -q "<!-- START:monitor-script -->" "$README"; then
+    echo "✅ Successfully injected script content."
+else
+    echo "❌ Failed to inject script content."
+    exit 1
+fi
+
