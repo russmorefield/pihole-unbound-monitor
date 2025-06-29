@@ -1,5 +1,6 @@
 # Pi-hole/Unbound Monitor
-![Version](https://img.shields.io/badge/version-{{VERSION}}-purple?style=for-the-badge)
+![GitHub release (latest by SemVer)](https://img.shields.io/github/v/release/russmorefield/pihole-unbound-monitor?sort=semver&color=brightgreen&label=version)
+
 <p align="center">
   <img src="assets/alt-logo.png" alt="Pi-hole Unbound Monitor Logo" width="800"/>
 </p>
