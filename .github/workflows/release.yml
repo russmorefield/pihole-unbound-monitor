@@ -10,6 +10,9 @@ on:
       - 'pihole-unbound-monitor.sh'
       - 'README.md'
 
+permissions:
+  contents: write
+
 jobs:
   update-readme-and-commit:
     runs-on: ubuntu-latest
