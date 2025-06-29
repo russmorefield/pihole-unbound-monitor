@@ -72,4 +72,6 @@ This script automates the process of:
 
 ## 📝 License
 
-MIT — free for personal or commercial use.
+This project is licensed under the [MIT License](LICENSE).
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
