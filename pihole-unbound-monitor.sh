@@ -8,6 +8,7 @@
 # - Sends Gotify notification on update or error
 # - Logs to /var/log/pihole-unbound-monitor.log
 # ==============================
+#edit for 
 
 # === CONFIGURATION ===
 GOTIFY_URL="http://your-gotify-url.example.com"
